@@ -37,6 +37,17 @@
     ***Website: https://medrayentn.github.io/myportfolio/
     ***Copyright © 2025 Rayen. All rights reserved.
   ======================================================== -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "p2yyKVZ8RrvIlZlqw",
+      });
+    })();
+  </script>
+
 </head>
 
 <body class="starter-page-page">
@@ -175,30 +186,30 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+            <form action="" method="post" onsubmit="return false;" class="php-email-form" data-aos="fade-up"
               data-aos-delay="200">
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Nom*" required="">
+                  <input type="text" name="name" id="name" class="form-control" placeholder="Nom*" required>
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Email*" required="">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email*" required>
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Sujet*" required="">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet*" required>
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message*" required=""></textarea>
+                  <textarea class="form-control" name="message" id="message" rows="6" placeholder="Message*" required></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="sent-message">Votre message a été envoyé. Merci !</div>
 
                   <button type="submit">Envoyer</button>
                 </div>
@@ -229,19 +240,18 @@
               <p>Nous travaillons avec la passion de relever des défis et d’en créer de nouveaux dans le secteur de la
                 publicité.</p>
               <p class="mt-3"><i class="bi bi-telephone-fill"></i> <span>+216 56 803 853</span></p>
-              <p><i class="bi bi-envelope-at-fill"></i> <span>dev@spire.tn</span></p>
+              <p><i class="bi bi-envelope-at-fill"></i> <span>devspire.agency@gmail.com</span></p>
             </div>
             <div class="social-links d-flex mt-4">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61579658386488"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/devspires.inspires/"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/devspiretn/"><i class="bi bi-linkedin"></i></a>
               <a href="contact.html"><i class="bi bi-envelope-paper"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-3 footer-links">
-            <h3>Nos Services</h3>
+            <h3 class="mb-4">Nos Services</h3>
             <ul>
               <li><i class="bi bi-chevron-double-right"></i> <a href="#"> Création Site Web</a></li>
               <li><i class="bi bi-chevron-double-right"></i> <a href="#"> App Mobile</a></li>
@@ -278,8 +288,13 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+    <svg class="progress-circle" width="40" height="40" viewBox="0 0 40 40">
+      <circle class="progress-background" cx="20" cy="20" r="18" />
+      <circle class="progress-bar" cx="20" cy="20" r="18" />
+    </svg>
+  </a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
