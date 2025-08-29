@@ -1,73 +1,48 @@
 <?php
-            // Define variables and initialize with empty values
-            $name = $email = $subject = $message = "";
-            $name_err = $email_err = $subject_err = $message_err = "";
-            $success_message = "";
-            
-            // Processing form data when form is submitted
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                
-                // Validate name
-                if (empty(trim($_POST["name"]))) {
-                    $name_err = "Please enter your name.";
-                } else {
-                    $name = trim($_POST["name"]);
-                    // Check if name contains only letters and whitespace
-                    if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
-                        $name_err = "Only letters and white space allowed.";
-                    }
-                }
-                
-                // Validate email
-                if (empty(trim($_POST["email"]))) {
-                    $email_err = "Please enter your email address.";
-                } else {
-                    $email = trim($_POST["email"]);
-                    // Check if email address is well-formed
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        $email_err = "Invalid email format.";
-                    }
-                }
-                
-                // Validate subject
-                if (empty(trim($_POST["subject"]))) {
-                    $subject_err = "Please enter a subject.";
-                } else {
-                    $subject = trim($_POST["subject"]);
-                }
-                
-                // Validate message
-                if (empty(trim($_POST["message"]))) {
-                    $message_err = "Please enter your message.";
-                } else {
-                    $message = trim($_POST["message"]);
-                }
-                
-                // Check input errors before sending email
-                if (empty($name_err) && empty($email_err) && empty($subject_err) && empty($message_err)) {
-                    
-                    // Recipient email (replace with your real receiving email address)
-                    $to = "devspire.agency@gmail.com";
-                    
-                    // Create email headers
-                    $headers = "From: " . $email . "\r\n";
-                    $headers .= "Reply-To: " . $email . "\r\n";
-                    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-                    
-                    // Email content
-                    $email_content = "Name: $name\n";
-                    $email_content .= "Email: $email\n\n";
-                    $email_content .= "Message:\n$message\n";
-                    
-                    // Send email
-                    if (mail($to, $subject, $email_content, $headers)) {
-                        $success_message = "Your message has been sent successfully!";
-                        
-                        // Clear form fields
-                        $name = $email = $subject = $message = "";
-                    } else {
-                        $success_message = "Oops! Something went wrong. Please try again later.";
-                    }
-                }
-            }
-            ?>
+// Replace contact@example.com with your real receiving email address
+$receiving_email_address = 'devspire.agency@gmail.com';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect and sanitize form data
+    $name = strip_tags(trim($_POST["name"]));
+    $name = str_replace(array("\r","\n"),array(" "," "),$name);
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $subject = trim($_POST["subject"]);
+    $message = trim($_POST["message"]);
+    
+    // Check that data was sent to the mailer
+    if (empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Set a 400 (bad request) response code and exit
+        http_response_code(400);
+        echo "Please complete the form and try again.";
+        exit;
+    }
+    
+    // Set the recipient email address
+    $recipient = $receiving_email_address;
+    
+    // Build the email content
+    $email_content = "Name: $name\n";
+    $email_content .= "Email: $email\n\n";
+    $email_content .= "Subject: $subject\n\n";
+    $email_content .= "Message:\n$message\n";
+    
+    // Build the email headers
+    $email_headers = "From: $name <$email>";
+    
+    // Send the email
+    if (mail($recipient, $subject, $email_content, $email_headers)) {
+        // Set a 200 (okay) response code
+        http_response_code(200);
+        echo "OK";
+    } else {
+        // Set a 500 (internal server error) response code
+        http_response_code(500);
+        echo "Oops! Something went wrong and we couldn't send your message.";
+    }
+} else {
+    // Not a POST request, set a 403 (forbidden) response code
+    http_response_code(403);
+    echo "There was a problem with your submission, please try again.";
+}
+?>
