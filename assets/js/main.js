@@ -333,3 +333,128 @@ const swiperContainer = document.querySelector('.project-swiper');
 if (swiperContainer) {
   swiperContainer.style.cursor = 'none';
 }
+
+
+
+/**
+ * Service Filter Functionality
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  // Service content data
+  const serviceContent = {
+    'web-creation': {
+      image: 'assets/img/services/creation-website.jpg',
+      title: 'Un site web unique qui reflète votre identité',
+      content: `
+        <p>Nous développons des sites web personnalisés, optimisés pour la performance et le référencement. 
+        Que ce soit un <strong>site vitrine</strong> pour présenter vos services, un <strong>site e-commerce</strong> 
+        pour vendre en ligne, ou un <strong>portfolio</strong> pour valoriser vos créations, 
+        nous transformons votre vision en une plateforme digitale attractive et fonctionnelle.</p>
+
+        <ul>
+          <li><i class="bi bi-check-circle"></i> <span>Design moderne, responsive et adapté à votre activité</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Optimisation SEO intégrée pour une meilleure visibilité</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Accompagnement de A à Z, de la conception au lancement</span></li>
+        </ul>
+        <p>Notre approche du web design combine créativité et stratégie pour créer des sites 
+        qui non seulement impressionnent visuellement mais convertissent également vos visiteurs en clients.</p>
+    `
+  },
+    'mobile-apps': {
+      image: 'assets/img/services/mobile.jpg',
+      title: 'Des solutions mobiles à portée de main',
+      content: `
+        <p>Nous développons des applications mobiles performantes et évolutives pour Android et iOS, 
+        afin d’offrir une expérience fluide à vos utilisateurs et renforcer la présence digitale de votre marque.</p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> <span>Applications natives et hybrides</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Développement cross-platform avec <strong>Flutter</strong></span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Interface utilisateur intuitive et moderne</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Maintenance et mises à jour continues</span></li>
+        </ul>
+        <p>Grâce à Flutter, nous créons une seule base de code qui fonctionne sur plusieurs plateformes, 
+        ce qui permet de réduire les coûts et d’accélérer le développement tout en garantissant 
+        des performances optimales.</p>
+      `
+    },
+    'web-development': {
+      image: 'assets/img/services/dev.jpg',
+      title: 'Des solutions robustes et évolutives',
+      content: `
+        <p>Nous développons des applications et plateformes web performantes, sécurisées et adaptées à vos besoins. 
+        Notre équipe maîtrise les technologies modernes du web pour offrir des solutions innovantes et durables.</p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> <span>Développement avec <strong>HTML, CSS et JavaScript</strong></span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Back-end puissant avec <strong>PHP & Laravel</strong></span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Front-end dynamique avec <strong>React.js</strong></span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Intégration d’API et services tiers</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Solutions scalables et performantes</span></li>
+        </ul>
+        <p>Grâce à cette expertise technique, nous transformons vos idées en solutions digitales 
+        robustes, évolutives et adaptées à la croissance de votre entreprise.</p>
+      `
+    },
+    'graphic-design': {
+      image: 'assets/img/services/design.jpg',
+      title: 'Un design qui attire et fidélise',
+      content: `
+        <p>De la création de logos au design complet de votre identité visuelle, nous vous aidons à construire une image professionnelle et mémorable.</p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> <span>Logos et chartes graphiques</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Flyers, cartes de visite, affiches</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>UI/UX pour sites et applications</span></li>
+        </ul>
+        <p>Un design qui parle pour votre entreprise avant même les mots.</p>
+      `
+    },
+    'web-selling': {
+      image: 'assets/img/services/web-selling.jpg',
+      title: 'Un site prêt à l’utilisation dès le premier jour',
+      content: `
+        <p>Nous proposons des sites web déjà conçus et optimisés, que vous pouvez personnaliser selon vos besoins pour démarrer sans attendre.</p>
+        <ul>
+          <li><i class="bi bi-check-circle"></i> <span>Sites vitrines, e‑commerce, portfolios disponibles</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Configuration rapide et personnalisable</span></li>
+          <li><i class="bi bi-check-circle"></i> <span>Support et accompagnement inclus</span></li>
+        </ul>
+        <p>Profitez de sites web clé en main, prêts à l’emploi, pour lancer rapidement votre activité en ligne.</p>
+      `
+    }
+  };
+
+  // Service filter functionality
+  const serviceLinks = document.querySelectorAll('.services-list a');
+  const serviceContentContainer = document.getElementById('service-content');
+
+  serviceLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // Remove active class from all links
+      serviceLinks.forEach(l => l.classList.remove('active'));
+
+      // Add active class to clicked link
+      this.classList.add('active');
+
+      // Get service type from data attribute
+      const serviceType = this.getAttribute('data-service');
+
+      // Update service content
+      if (serviceContent[serviceType]) {
+        const service = serviceContent[serviceType];
+        serviceContentContainer.innerHTML = `
+          <img src="${service.image}" alt="${service.title}" class="img-fluid services-img">
+          <h3>${service.title}</h3>
+          ${service.content}
+        `;
+
+        // Add animation effect
+        serviceContentContainer.style.opacity = '0';
+        setTimeout(() => {
+          serviceContentContainer.style.transition = 'opacity 0.5s ease';
+          serviceContentContainer.style.opacity = '1';
+        }, 50);
+      }
+    });
+  });
+});

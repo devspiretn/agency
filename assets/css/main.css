@@ -53,6 +53,46 @@
 }
 
 /*--------------------------------------------------------------
+# Webkit
+--------------------------------------------------------------*/
+/* Minimal Scrollbar Style */
+/* Highly Visible Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--background-color), transparent 0%);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent-color), transparent 0%);
+  border-radius: 8px;
+  border: 2px solid var(--background-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--accent-color), black 15%);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) color-mix(in srgb, var(--background-color), transparent 5%);
+}
+
+::selection {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+::-moz-selection {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+
+/*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
 body {
@@ -616,7 +656,7 @@ h6 {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-#preloader {
+/* #preloader {
   position: fixed;
   inset: 0;
   z-index: 999999;
@@ -646,42 +686,44 @@ h6 {
   100% {
     transform: rotate(360deg);
   }
+} */
+
+/* Minimal Big Logo Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease-out;
+}
+
+.logo-preloader {
+  width: 250px;
+  height: 250px;
+  background: url('../img/logo2.png') no-repeat center center;
+  background-size: contain;
+  animation: logo-grow 1.5s ease-in-out infinite;
+}
+
+@keyframes logo-grow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 /*--------------------------------------------------------------
-# Scroll Top Button
+# Progressive Scroll Top Button
 --------------------------------------------------------------*/
-/* .scroll-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right: 15px;
-  bottom: 15px;
-  z-index: 99999;
-  background-color: var(--accent-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.4s;
-}
 
-.scroll-top i {
-  font-size: 24px;
-  color: var(--contrast-color);
-  line-height: 0;
-}
-
-.scroll-top:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
-  color: var(--contrast-color);
-}
-
-.scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-} */
-
-/* Progressive Scroll Top Button */
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -1843,42 +1885,60 @@ section,
   margin-bottom: 15px;
 }
 
-.service-details .services-list {
-  background-color: var(--surface-color);
-}
-
-.service-details .services-list a {
+.services-list a {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);
   display: flex;
   align-items: center;
   padding: 12px 15px;
   margin-top: 15px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  border-left: 3px solid transparent;
 }
 
-.service-details .services-list a:first-child {
+.services-list a:first-child {
   margin-top: 0;
 }
 
-.service-details .services-list a i {
+.services-list a i {
   font-size: 16px;
   margin-right: 8px;
   color: var(--accent-color);
+  transition: all 0.3s ease;
 }
 
-.service-details .services-list a.active {
+.services-list a.active {
   color: var(--contrast-color);
   background-color: var(--accent-color);
+  border-left-color: var(--contrast-color);
 }
 
-.service-details .services-list a.active i {
+.services-list a.active i {
   color: var(--contrast-color);
 }
 
-.service-details .services-list a:hover {
+.services-list a:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
   color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.services-list a:hover i {
+  color: var(--accent-color);
+}
+
+/* Service content animation */
+#service-content {
+  transition: opacity 0.5s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .services-list a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
 }
 
 .service-details .download-catalog a {
@@ -2352,6 +2412,4 @@ section,
 }
 
 
-
-/* */
-
+/*  */
