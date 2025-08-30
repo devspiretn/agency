@@ -788,28 +788,81 @@ h6 {
 /*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs
 --------------------------------------------------------------*/
+
+/* Page Title with Background Image */
 .page-title {
-  color: var(--default-color);
-  background-color: var(--background-color);
   position: relative;
+  overflow: hidden;
 }
 
 .page-title .heading {
-  padding: 80px 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  position: relative;
+  padding: 120px 0;
+  z-index: 2;
 }
 
+/* Background image with overlay */
+.page-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../img/page-title.jpg'); /* Update with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Overlay for better text readability */
+.page-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+}
+
+/* Enhanced text styling for better visibility on background */
 .page-title .heading h1 {
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 700;
+  color: var(--contrast-color);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 3;
+  margin-bottom: 15px;
 }
 
-.page-title nav {
-  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+.page-title .heading p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 3;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Breadcrumbs styling */
+.breadcrumbs {
   padding: 20px 0;
+  position: relative;
+  z-index: 3;
+  backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
 }
 
-.page-title nav ol {
+.breadcrumbs ol {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -819,15 +872,57 @@ h6 {
   font-weight: 400;
 }
 
-.page-title nav ol li+li {
+.breadcrumbs ol li+li {
   padding-left: 10px;
 }
 
-.page-title nav ol li+li::before {
+.breadcrumbs ol li+li::before {
   content: "/";
   display: inline-block;
   padding-right: 10px;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+  color: var(--contrast-color);
+}
+
+.breadcrumbs ol li a {
+  color: var(--accent-color);
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.breadcrumbs ol li.current {
+  color: var(--contrast-color);
+  font-weight: 500;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-title .heading {
+    padding: 80px 0;
+  }
+  
+  .page-title .heading h1 {
+    font-size: 32px;
+  }
+  
+  .page-title .heading p {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+  
+  /* Adjust background for mobile */
+  .page-title::before {
+    background-attachment: scroll;
+  }
+
+  .breadcrumbs {
+    padding: 15px 0;
+  }
+  
+  .breadcrumbs ol {
+    font-size: 14px;
+    justify-content: center;
+  }
 }
 
 /*--------------------------------------------------------------
