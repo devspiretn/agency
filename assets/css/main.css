@@ -1864,6 +1864,43 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
+/* Style pour le bouton Acheter ce projet */
+.portfolio-info .btn-getstarted {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.portfolio-info .btn-getstarted:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.portfolio-info ul li.mt-3 {
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  padding-top: 15px;
+  margin-top: 15px;
+  list-style: none;
+}
+
+.portfolio-info ul li.mt-3 a {
+  display: block;
+  text-align: center;
+}
+
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
@@ -2411,5 +2448,55 @@ section,
   }
 }
 
+
+/*  */
+
+/* Offer Countdown Styles */
+.offer-countdown {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: color-mix(in srgb, var(--surface-color), transparent 5%);
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-label {
+  display: block;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.countdown-timer {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-family: monospace;
+  letter-spacing: 1.5px;
+}
+
+/* Style d'urgence */
+.countdown-timer.urgent {
+  color: #df1529;
+  animation: blink-alert 1.5s infinite;
+}
+
+.countdown-timer.warning {
+  color: #e67700;
+}
+
+@keyframes blink-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Style quand expiré */
+.countdown-timer.expired {
+  color: #df1529;
+  font-weight: 800;
+}
 
 /*  */

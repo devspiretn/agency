@@ -458,3 +458,80 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+// 
+
+/**
+ * Real Offer Countdown Timer with actual expiration date : Weboria Only
+ */
+function initOfferCountdown() {
+  const timerElement = document.getElementById('offerTimer');
+  if (!timerElement) return;
+  
+  // ⚠️ MODIFIEZ CETTE DATE AVEC VOTRE VÉRITABLE DATE D'EXPIRATION ⚠️
+  // Format: Année-Mois-Jour Heure:Minute:Seconde
+  const expirationDate = new Date('2025-09-30T23:59:59');
+  
+  function updateCountdown() {
+    const now = new Date();
+    const timeRemaining = expirationDate - now;
+    
+    // Si le compte à rebours est terminé
+    if (timeRemaining <= 0) {
+      timerElement.textContent = "OFFRE EXPIREE";
+      timerElement.className = "countdown-timer expired";
+      return;
+    }
+    
+    // Calculer le temps restant
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    
+    // Formater l'affichage
+    let formattedTime;
+    if (days > 0) {
+      formattedTime = `${days}j ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+      formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    
+    timerElement.textContent = formattedTime;
+    
+    // Styles conditionnels
+    timerElement.classList.remove('urgent', 'warning', 'expired');
+    
+    if (days === 0) {
+      if (hours < 24) {
+        timerElement.classList.add('urgent');
+      } else if (hours < 48) {
+        timerElement.classList.add('warning');
+      }
+    }
+  }
+  
+  // Vérifier si la date d'expiration est déjà passée
+  if (new Date() > expirationDate) {
+    timerElement.textContent = "OFFRE EXPIREE";
+    timerElement.className = "countdown-timer expired";
+    return;
+  }
+  
+  // Mettre à jour immédiatement puis toutes les secondes
+  updateCountdown();
+  const countdownInterval = setInterval(updateCountdown, 1000);
+  
+  // Nettoyer à la fermeture de la page
+  window.addEventListener('beforeunload', () => {
+    clearInterval(countdownInterval);
+  });
+}
+
+// Initialiser le compte à rebours
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initOfferCountdown);
+} else {
+  initOfferCountdown();
+}
