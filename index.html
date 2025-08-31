@@ -217,37 +217,100 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about section">
+<section id="about" class="about section">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-          <div class="col-lg-6 order-1 order-lg-2">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+    <div class="row gy-5 align-items-center">
+      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="200">
+        <div class="about-image position-relative">
+          <img src="assets/img/about.jpg" class="img-fluid rounded-3" alt="Équipe Devspire">
+          <div class="experience-badge">
+            <div class="badge-content">
+              <span class="years">2+</span>
+              <span class="text">Ans d'expérience</span>
+            </div>
           </div>
-          <div class="col-lg-6 order-2 order-lg-1 content">
-            <h3>Notre Histoire</h3>
-            <p class="fst-italic">
-              Nous avons commencé avec un rêve : redéfinir la créativité. Depuis, nous avons entrepris un parcours
-              marqué par une passion inébranlable et une innovation constante.
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Conception de solutions digitales innovantes adaptées à chaque
-                  besoin.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Une expertise technique et créative au service de votre
-                  réussite.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Un accompagnement basé sur la confiance et la
-                  collaboration.</span></li>
-            </ul>
-            <p>
-              Nous transformons vos idées en solutions concrètes qui améliorent votre visibilité et votre efficacité.
-            </p>
+          <div class="floating-element element-1">
+            <i class="bi bi-lightbulb"></i>
+          </div>
+          <div class="floating-element element-2">
+            <i class="bi bi-code-slash"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+        <h3 class="mb-4">Transformer les idées en solutions digitales</h3>
+        <p class="fst-italic lead">
+          Chez Devspire, nous croyons que chaque grande idée mérite une plateforme exceptionnelle pour briller.
+        </p>
+        
+        <div class="about-features mb-4">
+          <div class="feature-item d-flex align-items-center mb-3">
+            <div class="feature-icon me-3">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div>
+              <h5 class="mb-0">Innovation constante</h5>
+              <p class="mb-0">Nous restons à la pointe des technologies émergentes</p>
+            </div>
+          </div>
+          
+          <div class="feature-item d-flex align-items-center mb-3">
+            <div class="feature-icon me-3">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div>
+              <h5 class="mb-0">Approche collaborative</h5>
+              <p class="mb-0">Vous êtes impliqué à chaque étape du processus</p>
+            </div>
+          </div>
+          
+          <div class="feature-item d-flex align-items-center mb-3">
+            <div class="feature-icon me-3">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div>
+              <h5 class="mb-0">Excellence technique</h5>
+              <p class="mb-0">Code propre, design intuitif et performances optimales</p>
+            </div>
           </div>
         </div>
 
-      </div>
+        <div class="stats-grid mb-4">
+          <div class="row">
+            <div class="col-4">
+              <div class="stat-item text-center">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Projets</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="stat-item text-center">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Clients</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="stat-item text-center">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Satisfaction</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    </section><!-- /About Section -->
+        <div class="cta-buttons">
+          <a href="#portfolio" class="btn btn-primary me-3">Voir nos réalisations</a>
+          <a href="contact.html" class="btn btn-outline-primary">Discutons de votre projet</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
 
     <!-- Clients Section -->
     <section id="clients" class="clients section">
@@ -504,7 +567,7 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
               <img src="assets/img/portfolio/details/ipset-2.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>IPSET</h4>
@@ -588,7 +651,7 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
               <img src="assets/img/portfolio/details/PerfectCamp-1.png" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>PerfectCamp</h4>
@@ -658,7 +721,7 @@
                 <div class="stats-item d-flex">
                   <i class="bi bi-journal-richtext flex-shrink-0"></i>
                   <div>
-                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="52" data-purecounter-duration="1"
                       class="purecounter"></span>
                     <p><strong>Projets réalisés</strong> <span>dans divers secteurs</span></p>
                   </div>
