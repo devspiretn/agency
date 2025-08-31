@@ -1158,34 +1158,311 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about .content h3 {
-  font-size: 1.75rem;
+
+.about .section-title {
+  position: relative;
+  margin-bottom: 3rem !important;
+}
+
+.about .section-title h2 {
+  font-size: 2.5rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-.about .content .fst-italic {
-  color: color-mix(in srgb, var(--default-color), var(--contrast-color) 50%);
+.about .section-title h2::after {
+  display: none;
 }
 
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
-  padding: 10px 0 0 0;
-  display: flex;
-}
-
-.about .content ul i {
-  color: var(--accent-color);
-  margin-right: 0.5rem;
-  line-height: 1.2;
-  font-size: 1.25rem;
-}
-
-.about .content p:last-child {
+.about .section-title p {
+  font-size: 1.2rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
   margin-bottom: 0;
+}
+
+.about-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.about-image img {
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+.experience-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.experience-badge .badge-content {
+  text-align: center;
+}
+
+.experience-badge .years {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.experience-badge .text {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.floating-element {
+  position: absolute;
+  background: var(--surface-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-element i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.element-1 {
+  bottom: 30px;
+  left: 30px;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  top: 40px;
+  left: 40px;
+  animation-delay: 2s;
+}
+
+.about .content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--heading-color);
+}
+
+.about .content .lead {
+  font-size: 1.2rem;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.feature-item {
+  padding: 1rem;
+  background: color-mix(in srgb, var(--surface-color), transparent 5%);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-icon i {
+  font-size: 1.2rem;
+}
+
+.feature-item h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--heading-color);
+}
+
+.feature-item p {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-bottom: 0;
+}
+
+.stats-grid {
+  background: color-mix(in srgb, var(--surface-color), transparent 3%);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.stat-item {
+  padding: 1rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-weight: 500;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+}
+
+.cta-buttons .btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-buttons .btn-primary {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+.cta-buttons .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+.cta-buttons .btn-outline-primary {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.cta-buttons .btn-outline-primary:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about .content h3 {
+    font-size: 1.8rem;
+  }
+  
+  .experience-badge {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .experience-badge .years {
+    font-size: 1.5rem;
+  }
+  
+  .floating-element {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .floating-element i {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .about .content h3 {
+    font-size: 1.6rem;
+  }
+  
+  .about .content .lead {
+    font-size: 1.1rem;
+  }
+  
+  .stats-grid {
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .cta-buttons .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .cta-buttons .btn {
+    margin-bottom: 1rem;
+    display: block;
+    width: 100%;
+  }
+  
+  .experience-badge {
+    width: 70px;
+    height: 70px;
+    top: 15px;
+    right: 15px;
+  }
+  
+  .experience-badge .years {
+    font-size: 1.3rem;
+  }
+  
+  .experience-badge .text {
+    font-size: 0.7rem;
+  }
 }
 
 /*--------------------------------------------------------------
